@@ -106,26 +106,4 @@ Das Programm entscheidet:
 - wie viele Videos pro Tag
 - zu welchen Uhrzeiten
 
-**Wichtig:** Wenn die App selbst auf Zeiten wartet, muss sie laufen (oder du nutzt den Task Scheduler).
 
-### 2) Plattform-Planung (YouTube)
-YouTube kann beim Upload direkt terminieren:
-- `privacyStatus = private`
-- `publishAt = gewünschtes Datum/Zeit (UTC)`
-
-**Vorteil:** Programm muss nicht offen bleiben – YouTube veröffentlicht später automatisch.
-
-**Wichtig:** Wenn `publishAt` falsch/leer ist, kann das Video sofort veröffentlicht werden.
-
-> TikTok bietet kein identisches „publishAt“ wie YouTube. TikTok-Scheduling erfolgt in der Regel intern (oder über TikTok-eigene Tools, je nach Konto/Funktionen).
-
----
-
-## Build: Self-contained EXE (ohne Runtime-Zwang)
-
-### Variante A: per Script (empfohlen)
-Im Repo ist ein Build-Skript vorgesehen (falls vorhanden). Ansonsten nutze:
-
-```bat
-dotnet restore
-dotnet publish .\ShortUploaderUI\ShortUploaderUI.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
