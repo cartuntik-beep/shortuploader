@@ -36,18 +36,16 @@ ShortUploader nutzt **lokale KI über Ollama**, um Videoinhalte anhand von Frame
 
 ---
 
-## ⚙️ Voraussetzungen für Smart Lite
+## ⚙️ Voraussetzungen (Smart Lite)
 
-### Ollama
+### 1) Ollama
 
 Für die KI-Funktionen wird **Ollama** benötigt.
 
 - Ollama muss lokal installiert und aktiv sein
 - **Empfohlenes Modell:**
-
-```text
-gemma3:4b
-
+  ```text
+  gemma3:4b
 Dieses Modell bietet:
 
 stabile Vision-Unterstützung
@@ -58,8 +56,7 @@ Unterstützung für mehrere Bilder pro Anfrage
 
 Andere Modelle können funktionieren, werden aber nicht offiziell empfohlen.
 
-FFmpeg (Hinweis)
-
+2) FFmpeg (Hinweis)
 ShortUploader verwendet FFmpeg intern zur Extraktion einzelner Frames aus Videos.
 
 FFmpeg wird vom Programm genutzt, nicht manuell bedient
@@ -68,7 +65,6 @@ Die Bereitstellung von FFmpeg erfolgt projektintern
 (kein separater Download für Endnutzer erforderlich)
 
 🔐 Nutzerkontrolle & Transparenz
-
 ShortUploader postet niemals automatisch ohne Zustimmung.
 
 Alle KI-Vorschläge sind sichtbar und editierbar
@@ -80,7 +76,6 @@ Uploads starten erst nach expliziter Nutzeraktion
 Keine versteckten Uploads, keine Hintergrundaktionen
 
 🛡️ Datenschutz & Sicherheit
-
 Alle Daten bleiben lokal auf dem Gerät
 
 Keine Übertragung an Drittanbieter-KI-Dienste
@@ -90,7 +85,6 @@ Keine Speicherung oder Weitergabe persönlicher Nutzerdaten
 KI-Modelle laufen ausschließlich lokal über Ollama
 
 🎯 Zielgruppe
-
 ShortUploader richtet sich an:
 
 Content-Creator
@@ -102,9 +96,12 @@ Nutzer mit vielen Short-Videos
 Anwender, die Wert auf lokale Verarbeitung und Kontrolle legen
 
 🚧 Projektstatus
-
 Aktive Entwicklung
 
 Fokus auf Stabilität, Batch-Workflows und lokale KI
 
 Erweiterungen und Optimierungen geplant
+
+makefile
+Code kopieren
+::contentReference[oaicite:0]{index=0}
