@@ -1,109 +1,119 @@
-# ShortUploader (YouTube Shorts + TikTok) – Desktop Uploader mit Queue & Scheduling
+ShortUploader
 
-ShortUploader ist ein Windows-Desktopprogramm, das Short-Videos aus einem Ordner in eine Upload-Queue lädt und nacheinander zu:
-- **YouTube Shorts** (YouTube Data API v3)
-- **TikTok** (TikTok Developer: Login Kit + Content Posting API)
+ShortUploader ist ein Desktop-Programm für Windows, mit dem Short-Videos effizient vorbereitet und automatisiert hochgeladen werden können.
+Der Fokus liegt auf Batch-Workflows, lokaler KI-Unterstützung und voller Nutzerkontrolle vor dem Upload.
 
-hochlädt. Nach erfolgreichem Upload werden Videos automatisch in einen `uploaded/`-Ordner verschoben (bei Fehlern optional in `failed/`). Das Programm zeigt Status-Logs im UI und besitzt einen Retry-Mechanismus.
+Hauptfunktionen
 
-> Ziel: Upload automatisieren, Scheduling sauber abbilden, Dateien nach Upload wegorganisieren, ohne dass das Programm dauerhaft offen sein muss (je nach Modus).
+Warteschlange (Queue) für mehrere Videos
 
----
+Automatische Verarbeitung und Abarbeitung der Queue
 
-## Features
+Verschieben erfolgreich verarbeiteter Dateien in einen uploaded/-Ordner
 
-- Ordner auswählen → Videos werden in eine **Queue** geladen
-- Upload nacheinander (konfigurierbar)
-- **Retry** (z. B. 3 Versuche mit Backoff)
-- **Logging** (UI + Datei-Logs)
-- Nach Upload: Verschieben nach `uploaded/` (und optional `failed/`)
-- **YouTube Scheduling (plattformseitig)** via `publishAt` (Upload jetzt, Veröffentlichung später)
-- **Interne Planung** (Slots/Zeitplan durch das Tool)
+Status- und Fehler-Logging im UI
 
----
+Retry-Mechanismus bei Fehlern
 
-## Voraussetzungen
+Lokale KI-Unterstützung (Smart Lite) zur Generierung von:
 
-### System
-- Windows 10/11 (x64 empfohlen)
-- Internetverbindung
+Videotiteln
 
-### Für Entwickler / Selbst-Build
-- .NET SDK **8+** (zum Bauen der EXE)
+Hashtags
 
-Wenn du nur die fertige EXE nutzt, ist kein .NET Runtime-Zwang nötig (Self-contained Build).
+Alle automatisch erzeugten Inhalte sind vor dem Upload editierbar
 
----
+Smart Lite (lokale KI)
 
-## Schnellstart (Endnutzer)
+ShortUploader nutzt lokale KI über Ollama, um Videoinhalte anhand von Frames zu analysieren und daraus kreative, abwechslungsreiche Titel und Hashtags zu erzeugen.
 
-1. **Programm starten**
-2. **Video-Ordner auswählen**
-3. Plattform(en) konfigurieren:
-   - YouTube verbinden (OAuth)
-   - TikTok verbinden (Developer OAuth)
-4. Optional: Scheduling aktivieren (intern oder plattformseitig)
-5. **Start Upload** drücken
+Eigenschaften von Smart Lite
 
-Nach erfolgreichem Upload werden Videos nach `uploaded/` verschoben.
+100 % lokal (keine Cloud-KI, keine API-Kosten)
 
----
+Analyse basiert ausschließlich auf Bildmaterial (keine Audio-Analyse)
 
-## TikTok Setup (Developer) – Pflicht
+Anti-Duplikat-Logik:
 
-TikTok Upload benötigt eine TikTok Developer App.
+Vermeidet identische oder sehr ähnliche Titel bei mehreren Videos
 
-### 1) TikTok Developer App anlegen/konfigurieren
-Im TikTok Developer Portal:
-- **Platform:** Desktop
-- **Products aktivieren:**
-  - Login Kit
-  - Content Posting API (Direct Post)
-- **Redirect URI (Desktop Loopback):**
-  - `http://127.0.0.1:*/callback/`
-- **Scopes:**
-  - `user.info.basic`
-  - `video.publish`
+Erzwingt variierende Titel-Längen und Stilrichtungen
 
-### 2) Review / Production
-Für Posting-Funktionen kann TikTok eine **Review** verlangen. Stelle sicher:
-- App **nicht** im Status `Draft`
-- Terms of Service & Privacy Policy öffentlich erreichbar und von einer Homepage verlinkt
+Fallback-Mechanismen:
 
-Wenn TikTok beim Login „client_key“ meldet, ist die App häufig noch `Draft` oder nicht für Production freigegeben.
+Funktioniert auch bei unvollständigen oder nicht-strikten Modell-Antworten
 
-### 3) In der App eintragen
-Im Programm trägst du ein:
-- Client Key
-- Client Secret
-- Scopes (z. B. `user.info.basic,video.publish`)
-Dann klickst du auf **TikTok Login**.
+Stabil für Batch-Verarbeitung vieler Videos
 
-> Tokens werden lokal gespeichert (verschlüsselt) und automatisch refreshed.
+Voraussetzungen für Smart Lite
+Ollama
 
----
+Für die KI-Funktionen wird Ollama benötigt.
 
-## YouTube Setup – Pflicht
+Ollama muss lokal installiert und aktiv sein
 
-YouTube Upload nutzt die **YouTube Data API v3** (Google Cloud).
+Empfohlenes Modell:
 
-### 1) Google Cloud Projekt
-- YouTube Data API v3 aktivieren
-- OAuth Consent Screen konfigurieren
-- OAuth Client erstellen (Desktop)
-
-### 2) In der App verbinden
-- In ShortUploader **YouTube Login** starten
-- Zugriff erlauben
-- Danach kann die App uploaden und (optional) YouTube-Scheduling setzen
-
----
-
-## Scheduling – zwei Arten (wichtig)
-
-### 1) Interne Programm-Planung
-Das Programm entscheidet:
-- wie viele Videos pro Tag
-- zu welchen Uhrzeiten
+gemma3:4b
 
 
+Dieses Modell bietet:
+
+stabile Vision-Unterstützung
+
+gute Performance auch ohne starke GPU
+
+Unterstützung für mehrere Bilder pro Anfrage
+
+Andere Modelle können funktionieren, werden aber nicht offiziell empfohlen.
+
+FFmpeg (Hinweis)
+
+ShortUploader verwendet FFmpeg intern zur Extraktion einzelner Frames aus Videos.
+
+FFmpeg wird vom Programm genutzt, nicht manuell bedient
+
+Die Bereitstellung von FFmpeg erfolgt projektintern
+(kein separater Download für Endnutzer erforderlich)
+
+Nutzerkontrolle & Transparenz
+
+ShortUploader postet niemals automatisch ohne Zustimmung.
+
+Alle KI-Vorschläge sind sichtbar und editierbar
+
+Titel, Hashtags und weitere Metadaten können manuell angepasst werden
+
+Uploads starten erst nach expliziter Nutzeraktion
+
+Keine versteckten Uploads, keine Hintergrundaktionen
+
+Datenschutz & Sicherheit
+
+Alle Daten bleiben lokal auf dem Gerät
+
+Keine Übertragung an Drittanbieter-KI-Dienste
+
+Keine Speicherung oder Weitergabe persönlicher Nutzerdaten
+
+KI-Modelle laufen ausschließlich lokal über Ollama
+
+Zielgruppe
+
+ShortUploader richtet sich an:
+
+Content-Creator
+
+Social-Media-Manager
+
+Nutzer mit vielen Short-Videos
+
+Anwender, die Wert auf lokale Verarbeitung und Kontrolle legen
+
+Projektstatus
+
+Aktive Entwicklung
+
+Fokus auf Stabilität, Batch-Workflows und lokale KI
+
+Erweiterungen und Optimierungen geplant
