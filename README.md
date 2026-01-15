@@ -47,3 +47,64 @@ Für die KI-Funktionen wird **Ollama** benötigt.
 
 ```text
 gemma3:4b
+
+Dieses Modell bietet:
+
+stabile Vision-Unterstützung
+
+gute Performance auch ohne starke GPU
+
+Unterstützung für mehrere Bilder pro Anfrage
+
+Andere Modelle können funktionieren, werden aber nicht offiziell empfohlen.
+
+FFmpeg (Hinweis)
+
+ShortUploader verwendet FFmpeg intern zur Extraktion einzelner Frames aus Videos.
+
+FFmpeg wird vom Programm genutzt, nicht manuell bedient
+
+Die Bereitstellung von FFmpeg erfolgt projektintern
+(kein separater Download für Endnutzer erforderlich)
+
+🔐 Nutzerkontrolle & Transparenz
+
+ShortUploader postet niemals automatisch ohne Zustimmung.
+
+Alle KI-Vorschläge sind sichtbar und editierbar
+
+Titel, Hashtags und weitere Metadaten können manuell angepasst werden
+
+Uploads starten erst nach expliziter Nutzeraktion
+
+Keine versteckten Uploads, keine Hintergrundaktionen
+
+🛡️ Datenschutz & Sicherheit
+
+Alle Daten bleiben lokal auf dem Gerät
+
+Keine Übertragung an Drittanbieter-KI-Dienste
+
+Keine Speicherung oder Weitergabe persönlicher Nutzerdaten
+
+KI-Modelle laufen ausschließlich lokal über Ollama
+
+🎯 Zielgruppe
+
+ShortUploader richtet sich an:
+
+Content-Creator
+
+Social-Media-Manager
+
+Nutzer mit vielen Short-Videos
+
+Anwender, die Wert auf lokale Verarbeitung und Kontrolle legen
+
+🚧 Projektstatus
+
+Aktive Entwicklung
+
+Fokus auf Stabilität, Batch-Workflows und lokale KI
+
+Erweiterungen und Optimierungen geplant
