@@ -1,28 +1,140 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Terms of Service - ShortUploader</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terms of Service — ShortUploader</title>
+  <meta name="description" content="Terms of Service for ShortUploader." />
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#111b2f; --text:#e7eefc; --muted:#a9b7d0;
+      --border:#263552; --accent:#4aa3ff; --accent2:#7cddff;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(74,163,255,.16), transparent 55%),
+        linear-gradient(180deg, #071022, var(--bg));
+    }
+    a{color:inherit}
+    .wrap{max-width:980px;margin:0 auto;padding:20px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      padding:14px 16px;border:1px solid var(--border);border-radius:999px;
+      background:rgba(17,27,47,.65);backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      position:sticky;top:12px;z-index:10;
+    }
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+    .navlinks{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{
+      text-decoration:none;padding:9px 12px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(15,23,42,.6);font-size:13px
+    }
+    .pill:hover{border-color:#38507b}
+    .pill.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#061021;font-weight:800;
+    }
+    .card{
+      margin-top:18px;
+      background:rgba(17,27,47,.65);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:20px;
+    }
+    h1{margin:0 0 8px;font-size:26px}
+    .meta{color:var(--muted);font-size:13px;line-height:1.5}
+    h2{margin:18px 0 8px;font-size:16px}
+    p,li{color:var(--muted);line-height:1.65}
+    ul{margin:8px 0 0;padding-left:18px}
+    .foot{
+      margin:18px 0 0; color:var(--muted); font-size:12px;
+      border-top:1px solid var(--border); padding-top:14px;
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    }
+    code{font-family:var(--mono);font-size:12px;color:#cfe1ff}
+  </style>
 </head>
 <body>
-  <h1>Terms of Service</h1>
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="./index.html">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>ShortUploader</b><br/>
+          <span style="color:var(--muted);font-size:12px">Terms of Service</span>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a class="pill" href="./privacy.html">Privacy Policy</a>
+        <a class="pill" href="./index.html">Home</a>
+        <a class="pill primary" href="https://github.com/cartuntik-beep/shortuploader" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
 
-  <p>
-    ShortUploader is a desktop application intended for personal use by the
-    account owner to upload short-form video content.
-  </p>
+    <main class="card">
+      <h1>Terms of Service</h1>
+      <div class="meta">
+        Effective date: <span id="d"></span><br/>
+        These Terms of Service govern the use of the ShortUploader desktop application (“ShortUploader”, “the Application”).
+      </div>
 
-  <p>
-    The user is responsible for all content uploaded using the application
-    and must comply with the terms and policies of the respective platforms.
-  </p>
+      <h2>1. Purpose</h2>
+      <p>
+        ShortUploader is designed to assist content creators in preparing and publishing short-form video content to supported platforms
+        through a structured and transparent workflow.
+      </p>
 
-  <p>
-    The application does not provide services to third parties and does not
-    perform scraping, automated engagement, or data resale.
-  </p>
+      <h2>2. User Responsibilities</h2>
+      <ul>
+        <li>You confirm that you are authorized to publish content on the accounts you connect to the Application.</li>
+        <li>You are responsible for all content uploaded using the Application and must comply with applicable laws and platform rules.</li>
+        <li>You must not use the Application for prohibited activities such as scraping, automated engagement, or data resale.</li>
+      </ul>
 
-  <p>
-    The software is provided "as is" without warranties of any kind.
-  </p>
+      <h2>3. No Automated Engagement</h2>
+      <p>
+        The Application does not provide automated engagement, scraping, data resale, or content manipulation services.
+        Upload actions are initiated only after explicit user action and consent.
+      </p>
+
+      <h2>4. Availability and Changes</h2>
+      <p>
+        Platform APIs and requirements may change at any time. The developer does not guarantee uninterrupted availability
+        or platform acceptance of uploaded content.
+      </p>
+
+      <h2>5. Disclaimer</h2>
+      <p>
+        The software is provided <b>“as is”</b> without warranties of any kind. To the maximum extent permitted by law,
+        the developer shall not be liable for any damages arising from the use of the Application.
+      </p>
+
+      <h2>6. Contact</h2>
+      <p>
+        For questions or support, please use the GitHub repository:
+        <a href="https://github.com/cartuntik-beep/shortuploader" target="_blank" rel="noreferrer">cartuntik-beep/shortuploader</a>.
+      </p>
+
+      <div class="foot">
+        <div>© <span id="y"></span> ShortUploader</div>
+        <div><a href="./privacy.html">Privacy</a> · <a href="./index.html">Home</a> · <a href="https://github.com/cartuntik-beep/shortuploader" target="_blank" rel="noreferrer">GitHub</a></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("d").textContent = new Date().toISOString().slice(0,10);
+  </script>
 </body>
 </html>
