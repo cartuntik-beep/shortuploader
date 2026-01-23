@@ -1,97 +1,69 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy – ShortUploader</title>
+  <meta name="theme-color" content="#0b1020" />
 
   <style>
     body{
       margin:0;
       font-family:system-ui,Segoe UI,Arial;
       background:#0b1020;
-      color:#ffffff;
+      color:white;
       line-height:1.6;
     }
-    .wrap{max-width:900px;margin:auto;padding:30px}
+    .wrap{max-width:1100px;margin:auto;padding:30px}
     a{color:#7c5cff}
+    .card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:18px;
+      padding:24px;
+    }
   </style>
 </head>
 
 <body>
+
 <div class="wrap">
 
-<h1>Privacy Policy</h1>
-<p>Last updated: <span id="date"></span></p>
+  <div class="card">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: <span id="date"></span></p>
 
-<h2>1. Overview</h2>
-<p>
-ShortUploader is a locally installed desktop application.
-The application does not operate its own servers and does not collect personal data
-for its own purposes.
-</p>
+    <p>
+      ShortUploader is a locally installed desktop application.
+      The application does not collect or store personal data on external servers.
+    </p>
 
-<h2>2. Data Collection</h2>
-<p>The application does not:</p>
-<ul>
-  <li>Collect analytics or tracking data</li>
-  <li>Store personal data externally</li>
-  <li>Share user data with third parties</li>
-</ul>
+    <ul>
+      <li>No analytics tracking</li>
+      <li>No advertising</li>
+      <li>No data resale</li>
+    </ul>
 
-<h2>3. Authentication</h2>
-<p>
-When connecting a platform account, authentication is performed through official
-authorization systems provided by the platform.
-</p>
+    <p>
+      Uploads are sent directly to the selected platform.
+    </p>
 
-<p>
-Only the permissions explicitly approved by the user are used.
-</p>
+    <p>
+      GitHub Pages may process technical access data.
+    </p>
 
-<h2>4. Uploaded Content</h2>
-<p>
-Videos and metadata are transmitted directly from the user's device
-to the selected platform.
-</p>
-
-<p>
-ShortUploader does not store or analyze uploaded content.
-</p>
-
-<h2>5. Website Hosting</h2>
-<p>
-This website is hosted via GitHub Pages.
-GitHub may process technical access data in accordance with their own privacy policy.
-</p>
-
-<h2>6. Cookies</h2>
-<p>
-This website does not use its own cookies or tracking tools.
-</p>
-
-<h2>7. Affiliation Disclaimer</h2>
-<p>
-ShortUploader is not affiliated with or endorsed by TikTok, ByteDance or any
-other platform provider.
-</p>
-
-<h2>8. Contact</h2>
-<p>
-<a href="https://github.com/cartuntik-beep/shortupload" target="_blank">
-https://github.com/cartuntik-beep/shortupload
-</a>
-</p>
-
-<p>
-<a href="index.html">← Back to homepage</a>
-</p>
+    <p>
+      Repository:
+      <a href="https://github.com/cartuntik-beep/shortupload" target="_blank">
+        https://github.com/cartuntik-beep/shortupload
+      </a>
+    </p>
+  </div>
 
 </div>
 
 <script>
-document.getElementById("date").textContent =
-  new Date().toLocaleDateString("en-GB");
+document.getElementById("date").textContent=new Date().toLocaleDateString("en-GB");
 </script>
 
 </body>
