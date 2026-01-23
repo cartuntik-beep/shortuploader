@@ -1,60 +1,95 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Impressum – ShortUploader</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortUploader — Impressum</title>
+  <meta name="description" content="Impressum für ShortUploader." />
+  <meta name="theme-color" content="#0b1020" />
   <style>
+    :root{
+      --bg:#0b1020; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.68);
+      --border:rgba(255,255,255,.12); --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px; --max:900px;
+    }
+    *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:system-ui,Segoe UI,Arial;
-      background:#0b1020;
-      color:white;
+      margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background: radial-gradient(900px 520px at 20% 15%, rgba(124,92,255,.20), transparent 60%), var(--bg);
       line-height:1.6;
     }
-    .wrap{max-width:1100px;margin:auto;padding:30px}
-    a{color:#7c5cff}
-    .card{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:18px;
-      padding:24px;
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 56px;}
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius);
+      background: rgba(255,255,255,0.05); box-shadow:var(--shadow);
     }
+    .top a{color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px; border:1px solid transparent;}
+    .top a:hover{color:var(--text); border-color:var(--border); background:rgba(255,255,255,.04);}
+    h1{margin:18px 0 8px; font-size:28px;}
+    .meta{color:var(--muted); margin:0 0 18px; font-size:13px;}
+    .card{
+      border:1px solid var(--border); border-radius:var(--radius); padding:18px 18px;
+      background: rgba(255,255,255,0.04); box-shadow:var(--shadow);
+    }
+    h2{margin:18px 0 8px; font-size:18px;}
+    p,li{color:var(--muted); font-size:14px;}
+    ul{margin:8px 0 0; padding-left:18px;}
+    code{background:rgba(255,255,255,.06); padding:2px 6px; border-radius:8px; color:var(--text);}
   </style>
 </head>
-
 <body>
+  <main class="wrap">
+    <div class="top">
+      <div><b>ShortUploader</b> <span style="color:rgba(255,255,255,.55)">— Impressum</span></div>
+      <div>
+        <a href="index.html">Startseite</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
 
-<div class="wrap">
-
-  <div class="card">
     <h1>Impressum</h1>
 
-    <p><strong>Angaben gemäß § 5 TMG</strong></p>
+    <div class="card">
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        Georgios Primoudis<br>
+        Deutschland
+      </p>
 
-    <p>
-      Georgios Primoudis<br>
-      Deutschland
-    </p>
+      <h2>Projekt</h2>
+      <p>
+        ShortUploader ist ein privates Softwareprojekt und stellt keinen kommerziellen Dienst dar.
+      </p>
 
-    <p>
-      Projekt:
-      <a href="https://github.com/cartuntik-beep/shortupload" target="_blank">
-        https://github.com/cartuntik-beep/shortupload
-      </a>
-    </p>
+      <h2>Kontakt</h2>
+      <p>
+        Projekt-Repository:<br>
+        <a href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">
+          https://github.com/cartuntik-beep/shortupload
+        </a>
+        <br /><br />
+        Support / Issues:<br>
+        <a href="https://github.com/cartuntik-beep/shortupload/issues" target="_blank" rel="noopener noreferrer">
+          https://github.com/cartuntik-beep/shortupload/issues
+        </a>
+      </p>
 
-    <p>
-      ShortUploader ist ein privates Softwareprojekt und kein kommerzieller Dienst.
-    </p>
+      <h2>Haftungsausschluss</h2>
+      <p>
+        Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.
+        Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+      </p>
 
-    <p>
-      Keine Verbindung zu TikTok, ByteDance oder anderen Plattformen.
-    </p>
-  </div>
-
-</div>
-
+      <h2>Hinweis zur Plattformzugehörigkeit</h2>
+      <p>
+        ShortUploader ist nicht mit TikTok, ByteDance, YouTube oder anderen Plattformen verbunden
+        und wird nicht von diesen unterstützt oder betrieben.
+      </p>
+    </div>
+  </main>
 </body>
 </html>
