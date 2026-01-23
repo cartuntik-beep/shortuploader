@@ -1,89 +1,123 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terms of Service – ShortUploader</title>
+  <meta name="theme-color" content="#0b1020" />
 
   <style>
+    :root{
+      --bg:#0b1020;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --border:rgba(255,255,255,.12);
+      --brand:#7c5cff;
+      --brand2:#22d3ee;
+      --radius:18px;
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
     body{
       margin:0;
       font-family:system-ui,Segoe UI,Arial;
       background:#0b1020;
-      color:#ffffff;
+      color:var(--text);
       line-height:1.6;
     }
-    .wrap{max-width:900px;margin:auto;padding:30px}
-    a{color:#7c5cff}
+
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:var(--max);margin:auto;padding:28px 18px 56px}
+
+    header{
+      padding:14px 18px;
+      border-bottom:1px solid var(--border);
+      background:rgba(11,16,32,.85);
+      backdrop-filter:blur(10px);
+    }
+
+    .card{
+      margin-top:20px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    footer{
+      margin-top:30px;
+      padding-top:18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
   </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<h1>Terms of Service</h1>
-<p>Last updated: <span id="date"></span></p>
+<header>
+  <strong>ShortUploader</strong>
+</header>
 
-<h2>1. Application Description</h2>
-<p>
-ShortUploader is a desktop application intended solely for use by the account owner
-to upload short-form video content to supported platforms.
-</p>
+<main class="wrap">
 
-<h2>2. Intended Use</h2>
-<ul>
-  <li>Use by the owner of the connected account only</li>
-  <li>No third-party account management</li>
-  <li>No commercial upload or agency services</li>
-</ul>
+  <div class="card">
+    <h1>Terms of Service</h1>
+    <p>Last updated: <span id="date"></span></p>
 
-<h2>3. User Responsibility</h2>
-<p>
-The user is fully responsible for all uploaded content and must comply with
-platform rules, community guidelines and applicable laws.
-</p>
+    <h2>1. Purpose</h2>
+    <p>
+      ShortUploader is a desktop application intended for use by the account owner
+      to upload short-form video content.
+    </p>
 
-<h2>4. Prohibited Use</h2>
-<ul>
-  <li>No scraping of platform data</li>
-  <li>No automated engagement (likes, comments, follows)</li>
-  <li>No circumvention of platform security systems</li>
-  <li>No resale or redistribution of services</li>
-</ul>
+    <h2>2. User Responsibility</h2>
+    <ul>
+      <li>You are responsible for all uploaded content.</li>
+      <li>You must comply with platform rules and laws.</li>
+    </ul>
 
-<h2>5. API Usage</h2>
-<p>
-ShortUploader interacts with platforms only through official authentication
-mechanisms and within the scope permitted by their APIs.
-</p>
+    <h2>3. Prohibited Use</h2>
+    <ul>
+      <li>No scraping</li>
+      <li>No automated engagement</li>
+      <li>No third-party upload services</li>
+    </ul>
 
-<h2>6. Disclaimer</h2>
-<p>
-The software is provided “as is”, without warranties of any kind.
-</p>
+    <h2>4. Disclaimer</h2>
+    <p>The software is provided "as is".</p>
 
-<h2>7. Affiliation Disclaimer</h2>
-<p>
-ShortUploader is not affiliated with, endorsed by, or officially connected to
-TikTok, ByteDance, YouTube or any other platform.
-</p>
+    <p>
+      Repository:
+      <a href="https://github.com/cartuntik-beep/shortupload" target="_blank">
+        https://github.com/cartuntik-beep/shortupload
+      </a>
+    </p>
+  </div>
 
-<h2>8. Project Repository</h2>
-<p>
-<a href="https://github.com/cartuntik-beep/shortupload" target="_blank">
-https://github.com/cartuntik-beep/shortupload
-</a>
-</p>
+  <footer>
+    <div>© <span id="year"></span> ShortUploader</div>
+    <div>
+      <a href="index.html">Home</a> |
+      <a href="privacy.html">Privacy</a> |
+      <a href="impressum.html">Impressum</a>
+    </div>
+  </footer>
 
-<p>
-<a href="index.html">← Back to homepage</a>
-</p>
-
-</div>
+</main>
 
 <script>
-document.getElementById("date").textContent =
-  new Date().toLocaleDateString("en-GB");
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("date").textContent=new Date().toLocaleDateString("en-GB");
 </script>
 
 </body>
