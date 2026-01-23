@@ -3,68 +3,127 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy – ShortUploader</title>
+  <title>ShortUploader — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy für ShortUploader." />
   <meta name="theme-color" content="#0b1020" />
-
   <style>
+    :root{
+      --bg:#0b1020; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.68);
+      --border:rgba(255,255,255,.12); --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px; --max:900px;
+    }
+    *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:system-ui,Segoe UI,Arial;
-      background:#0b1020;
-      color:white;
+      margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background: radial-gradient(900px 520px at 80% 18%, rgba(34,211,238,.14), transparent 60%), var(--bg);
       line-height:1.6;
     }
-    .wrap{max-width:1100px;margin:auto;padding:30px}
-    a{color:#7c5cff}
-    .card{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:18px;
-      padding:24px;
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 56px;}
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius);
+      background: rgba(255,255,255,0.05); box-shadow:var(--shadow);
     }
+    .top a{color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px; border:1px solid transparent;}
+    .top a:hover{color:var(--text); border-color:var(--border); background:rgba(255,255,255,.04);}
+    h1{margin:18px 0 8px; font-size:28px;}
+    .meta{color:var(--muted); margin:0 0 18px; font-size:13px;}
+    .card{
+      border:1px solid var(--border); border-radius:var(--radius); padding:18px 18px;
+      background: rgba(255,255,255,0.04); box-shadow:var(--shadow);
+    }
+    h2{margin:18px 0 8px; font-size:18px;}
+    p,li{color:var(--muted); font-size:14px;}
+    ul{margin:8px 0 0; padding-left:18px;}
+    code{background:rgba(255,255,255,.06); padding:2px 6px; border-radius:8px; color:var(--text);}
   </style>
 </head>
-
 <body>
+  <main class="wrap">
+    <div class="top">
+      <div><b>ShortUploader</b> <span style="color:rgba(255,255,255,.55)">— Privacy Policy</span></div>
+      <div>
+        <a href="index.html">Startseite</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
 
-<div class="wrap">
-
-  <div class="card">
     <h1>Privacy Policy</h1>
-    <p>Last updated: <span id="date"></span></p>
+    <p class="meta">Stand: <span id="date"></span></p>
 
-    <p>
-      ShortUploader is a locally installed desktop application.
-      The application does not collect or store personal data on external servers.
-    </p>
+    <div class="card">
+      <h2>1. Überblick</h2>
+      <p>
+        Diese Datenschutzerklärung beschreibt, wie ShortUploader mit Daten umgeht. ShortUploader ist eine Desktop-Anwendung,
+        die lokal auf deinem Gerät ausgeführt wird. Diese Website dient primär der Dokumentation und Bereitstellung
+        rechtlicher Informationen.
+      </p>
 
-    <ul>
-      <li>No analytics tracking</li>
-      <li>No advertising</li>
-      <li>No data resale</li>
-    </ul>
+      <h2>2. Datenverarbeitung in der Anwendung</h2>
+      <ul>
+        <li><b>Keine Server-Speicherung:</b> ShortUploader speichert Videos nicht auf einem externen Server.</li>
+        <li><b>Lokale Verarbeitung:</b> Metadaten (z. B. Titel, Beschreibung) werden innerhalb der App lokal verarbeitet.</li>
+        <li><b>Keine eigenen Analysen/Tracker:</b> ShortUploader nutzt keine eigenen Analytics- oder Tracking-Systeme.</li>
+        <li><b>Keine Datenweitergabe:</b> Es erfolgt keine Weitergabe von Nutzerdaten an Dritte durch die App (außer an die Zielplattform im Rahmen des Uploads).</li>
+      </ul>
 
-    <p>
-      Uploads are sent directly to the selected platform.
-    </p>
+      <h2>3. Authentifizierung & Plattformzugriff (TikTok-konform)</h2>
+      <p>
+        Wenn du ein Plattformkonto (z. B. TikTok) verbindest, erfolgt die Anmeldung über offizielle Autorisierungsmechanismen
+        der jeweiligen Plattform. Dabei werden nur die Berechtigungen genutzt, die du im Autorisierungsprozess ausdrücklich
+        freigegeben hast.
+      </p>
 
-    <p>
-      GitHub Pages may process technical access data.
-    </p>
+      <h2>4. Uploads zu Plattformen</h2>
+      <p>
+        Beim Upload werden Inhalte und ggf. Metadaten direkt von deinem Gerät an die von dir ausgewählte Plattform übertragen.
+        Für die Verarbeitung dort gelten die Datenschutzbestimmungen und Bedingungen der jeweiligen Plattform.
+      </p>
 
-    <p>
-      Repository:
-      <a href="https://github.com/cartuntik-beep/shortupload" target="_blank">
-        https://github.com/cartuntik-beep/shortupload
-      </a>
-    </p>
-  </div>
+      <h2>5. Website (GitHub Pages)</h2>
+      <p>
+        Diese Website wird über GitHub Pages bereitgestellt. GitHub kann dabei technische Zugriffsdaten (z. B. IP-Adresse,
+        User-Agent, Zeitpunkt) verarbeiten, um die Website auszuliefern und zu schützen. Details findest du in den
+        Datenschutzinformationen von GitHub.
+      </p>
 
-</div>
+      <h2>6. Cookies & Tracking</h2>
+      <p>
+        Auf dieser Website werden von uns keine eigenen Tracking-Tools eingesetzt. Es werden keine Werbe-Tracker
+        eingebunden.
+      </p>
 
-<script>
-document.getElementById("date").textContent=new Date().toLocaleDateString("en-GB");
-</script>
+      <h2>7. Änderungen</h2>
+      <p>
+        Diese Datenschutzerklärung kann aktualisiert werden. Die jeweils aktuelle Version ist auf dieser Seite veröffentlicht.
+      </p>
 
+      <h2>8. Projekt / Repository / Kontakt</h2>
+      <p>
+        Offizielles Projekt-Repository:
+        <a href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">
+          https://github.com/cartuntik-beep/shortupload
+        </a>
+        <br />
+        Support / Issues:
+        <a href="https://github.com/cartuntik-beep/shortupload/issues" target="_blank" rel="noopener noreferrer">
+          https://github.com/cartuntik-beep/shortupload/issues
+        </a>
+      </p>
+
+      <p style="color:rgba(255,255,255,.55); margin-top:14px;">
+        Hinweis: ShortUploader ist nicht mit TikTok, ByteDance, YouTube oder anderen Plattformen verbunden und wird nicht von ihnen unterstützt.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const d = new Date();
+    document.getElementById("date").textContent =
+      d.toLocaleDateString("de-DE", { year:"numeric", month:"long", day:"2-digit" });
+  </script>
 </body>
 </html>
