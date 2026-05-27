@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortUploader - Creator Upload Studio</title>
+  <meta name="description" content="ShortUploader ist eine Windows-Desktop-App für YouTube Shorts und TikTok Uploads mit Queue, Planung, Smart Lite AI und Logs." />
+  <meta name="theme-color" content="#080b12" />
+
+  <style>
+    :root{
+      --bg:#080b12;
+      --surface:#101827;
+      --surface-2:#131d30;
+      --text:#f8fafc;
+      --muted:#a8b3c7;
+      --subtle:#77849b;
+      --border:#253148;
+      --cyan:#38bdf8;
+      --blue:#2563eb;
+      --violet:#8b5cf6;
+      --green:#22c55e;
+      --amber:#f59e0b;
+      --danger:#ef4444;
+      --shadow:0 18px 50px rgba(0,0,0,.38);
+      --radius:8px;
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box;min-width:0}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:linear-gradient(180deg,#080b12 0%,#0c111d 44%,#080b12 100%);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(8,11,18,.86);
+      backdrop-filter:blur(14px);
+    }
+    .navwrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:220px;
+    }
+    .logo{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan) 55%,var(--green));
+      box-shadow:0 10px 30px rgba(37,99,235,.32);
+      position:relative;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;
+      left:15px;
+      top:11px;
+      width:0;
+      height:0;
+      border-top:9px solid transparent;
+      border-bottom:9px solid transparent;
+      border-left:13px solid #fff;
+    }
+    .brand b{display:block;font-size:15px}
+    .brand span{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:6px;
+    }
+    .nav a{
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid transparent;
+    }
+    .nav a:hover,.nav a.active{
+      color:var(--text);
+      text-decoration:none;
+      border-color:rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      min-height:68vh;
+      max-height:720px;
+      display:flex;
+      align-items:center;
+      background-image:
+        linear-gradient(90deg,rgba(8,11,18,.98) 0%,rgba(8,11,18,.88) 43%,rgba(8,11,18,.34) 100%),
+        url("assets/tutorial/dashboard.png");
+      background-size:cover;
+      background-position:center right;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .hero-inner{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:64px 18px;
+    }
+    .hero-copy{max-width:650px;min-width:0;width:100%}
+    .eyebrow{
+      color:var(--cyan);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin:0 0 14px;
+    }
+    h1{
+      margin:0;
+      font-size:56px;
+      line-height:1.02;
+      letter-spacing:0;
+      overflow-wrap:anywhere;
+    }
+    .lead{
+      margin:18px 0 0;
+      color:var(--muted);
+      font-size:18px;
+      max-width:58ch;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:24px 0 0;
+    }
+    .badge{
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:999px;
+      padding:7px 10px;
+      color:#dbeafe;
+      background:rgba(16,24,39,.76);
+      font-size:13px;
+      font-weight:700;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:26px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:10px 14px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:#182238;
+      color:var(--text);
+      font-weight:800;
+      font-size:14px;
+    }
+    .btn:hover{background:#202d49;text-decoration:none}
+    .btn.primary{
+      border-color:#60a5fa;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#06111f;
+    }
+
+    main{max-width:var(--max);margin:0 auto;padding:28px 18px 56px}
+    section{margin-top:34px}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-end;
+      margin-bottom:14px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:28px;
+      line-height:1.15;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width:58ch;
+    }
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg,rgba(19,29,48,.92),rgba(12,17,29,.92));
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .feature h3,.step h3{margin:0 0 8px;font-size:17px}
+    .feature p,.step p,.panel p{margin:0;color:var(--muted);font-size:14px}
+    .feature-mark{
+      width:34px;
+      height:34px;
+      border-radius:8px;
+      display:grid;
+      place-items:center;
+      margin-bottom:14px;
+      font-weight:900;
+      background:#172033;
+      border:1px solid var(--border);
+      color:var(--cyan);
+    }
+    .feature:nth-child(2) .feature-mark{color:var(--green)}
+    .feature:nth-child(3) .feature-mark{color:var(--violet)}
+    .feature:nth-child(4) .feature-mark{color:var(--amber)}
+    .feature:nth-child(5) .feature-mark{color:var(--cyan)}
+    .feature:nth-child(6) .feature-mark{color:var(--danger)}
+
+    .workflow{
+      counter-reset:step;
+    }
+    .step{
+      position:relative;
+      padding-left:58px;
+      min-height:96px;
+    }
+    .step::before{
+      counter-increment:step;
+      content:counter(step);
+      position:absolute;
+      left:18px;
+      top:18px;
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border-radius:8px;
+      background:#1d4ed8;
+      color:white;
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .preview{
+      display:grid;
+      grid-template-columns:.78fr 1.22fr;
+      gap:18px;
+      align-items:center;
+    }
+    .preview figure{
+      margin:0;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#05070c;
+      box-shadow:var(--shadow);
+    }
+    .list{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .list li{margin:7px 0}
+    .download{
+      border-color:rgba(56,189,248,.32);
+      background:linear-gradient(135deg,rgba(37,99,235,.22),rgba(19,29,48,.95) 44%,rgba(34,197,94,.12));
+    }
+
+    footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:22px 18px 40px;
+      color:var(--subtle);
+      font-size:13px;
+      border-top:1px solid rgba(255,255,255,.08);
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    footer .links{display:flex;gap:12px;flex-wrap:wrap}
+    footer a{color:var(--muted)}
+
+    @media (max-width:980px){
+      .navwrap{align-items:flex-start;flex-direction:column}
+      .nav{justify-content:flex-start}
+      .hero{
+        min-height:auto;
+        background-image:
+          linear-gradient(180deg,rgba(8,11,18,.97) 0%,rgba(8,11,18,.94) 100%),
+          url("assets/tutorial/dashboard.png");
+        background-position:center top;
+      }
+      h1{font-size:42px}
+      .lead{font-size:16px}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .grid3,.grid2,.preview{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .navwrap,.hero-inner,main,footer{width:100%;max-width:390px;margin-left:0;margin-right:0}
+      h1{font-size:32px}
+      .hero-inner{padding:44px 18px}
+      .brand{min-width:0}
+      .nav a{font-size:13px}
+      .card{padding:15px}
+      .step{padding-left:15px;padding-top:54px}
+      .step::before{left:15px;top:15px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="navwrap">
+      <a class="brand" href="index.html" aria-label="ShortUploader Startseite">
+        <span class="logo" aria-hidden="true"></span>
+        <span>
+          <b>ShortUploader</b>
+          <span>Creator Upload Studio</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a class="active" href="index.html">Startseite</a>
+        <a href="tutorial.html">Tutorial / Info</a>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="ShortUploader">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Windows Desktop App für Creator</p>
+        <h1>ShortUploader</h1>
+        <p class="lead">
+          Organisiere YouTube Shorts und TikTok Uploads lokal:
+          Videos scannen, Queue planen, Smart-Lite-Vorschläge erzeugen, Uploads starten und Logs verfolgen.
+        </p>
+        <div class="badges" aria-label="Produkt-Highlights">
+          <span class="badge">YouTube + TikTok</span>
+          <span class="badge">Queue & Kalenderplanung</span>
+          <span class="badge">Lokale Smart Lite AI</span>
+          <span class="badge">Retry, Logs, uploaded/failed</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">Download auf GitHub</a>
+          <a class="btn" href="tutorial.html">Tutorial ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="features" aria-label="Features">
+      <div class="section-head">
+        <h2>Was ShortUploader kann</h2>
+        <p>Die App ist auf wiederholbare Short-Video-Workflows ausgelegt: lokal, nachvollziehbar und mit klaren Statusanzeigen pro Video.</p>
+      </div>
+      <div class="grid3">
+        <article class="card feature">
+          <div class="feature-mark">YT</div>
+          <h3>YouTube Uploads</h3>
+          <p>Titel, Beschreibung, Tags, Kategorie, Privacy und optional geplante Veröffentlichung per publishAt.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature-mark">TT</div>
+          <h3>TikTok Uploads</h3>
+          <p>OAuth, Caption-Template, Privacy, AI-Label, Kommentare, Duet, Stitch und Commercial Disclosure.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature-mark">Q</div>
+          <h3>Queue Workspace</h3>
+          <p>Normale Queue und alte TikTok Queue getrennt verwalten, gemeinsam anzeigen und sauber starten.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature-mark">K</div>
+          <h3>Kalenderplanung</h3>
+          <p>Startdatum, Tage, Videos pro Tag und Uhrzeiten festlegen. Die Timeline zeigt die geplante Upload-Reihenfolge.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature-mark">AI</div>
+          <h3>Smart Lite</h3>
+          <p>Lokale Vorschläge für Titel, Hashtags und Captions über Ollama und extrahierte Video-Frames.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature-mark">L</div>
+          <h3>Logs & Sicherheit</h3>
+          <p>Live-Logs, Filter, Retry/Backoff und automatische Sortierung nach uploaded/ oder failed/.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" aria-label="Workflow">
+      <div class="section-head">
+        <h2>Vom Ordner zum Upload</h2>
+        <p>Der Ablauf ist bewusst einfach gehalten, damit du mehrere Videos schnell vorbereiten und kontrolliert veröffentlichen kannst.</p>
+      </div>
+      <div class="grid3 workflow">
+        <article class="card step">
+          <h3>Ordner wählen & scannen</h3>
+          <p>ShortUploader liest Videos aus deinem Arbeitsordner und übernimmt vorhandene TikTok-Queue-Dateien separat.</p>
+        </article>
+        <article class="card step">
+          <h3>Planen & optimieren</h3>
+          <p>Setze Slots pro Tag, nutze optional Smart Lite und prüfe Titel, Hashtags, Captions und Plattformoptionen.</p>
+        </article>
+        <article class="card step">
+          <h3>Starten & verfolgen</h3>
+          <p>Uploads laufen mit Status, Retry-Logik und Ergebnisanzeige. Danach landen Dateien je nach Ergebnis in uploaded/ oder failed/.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-label="Tutorial Vorschau">
+      <div class="preview">
+        <div class="panel">
+          <p class="eyebrow">Tutorial / Info</p>
+          <h2 style="margin:0 0 10px;font-size:28px;line-height:1.15">Alle Bereiche mit echten App-Screenshots</h2>
+          <p>Die Tutorial-Seite zeigt Dashboard, Queue, Planung, AI Studio, Plattformen, Logs und Einstellungen anhand der aktuellen Desktop-App.</p>
+          <ul class="list">
+            <li>Kurzer Start-Workflow für neue Nutzer.</li>
+            <li>Funktionserklärungen ohne echte Accountdaten.</li>
+            <li>Relative Bildpfade für GitHub Pages.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="tutorial.html">Tutorial / Info öffnen</a>
+          </div>
+        </div>
+        <figure aria-label="ShortUploader Dashboard Screenshot">
+          <img src="assets/tutorial/dashboard.png" alt="ShortUploader Dashboard mit Queue Workspace und Upload-Reihenfolge" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="download" class="card download" aria-label="Download">
+      <div class="section-head" style="margin-bottom:0">
+        <div>
+          <p class="eyebrow">Download</p>
+          <h2>Bereitstellung über GitHub</h2>
+          <p>Releases, Quellcode, Build-Anleitung und Issues liegen im offiziellen Repository.</p>
+        </div>
+        <div class="actions" style="margin-top:0">
+          <a class="btn primary" href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">Zum Repository</a>
+          <a class="btn" href="https://github.com/cartuntik-beep/shortupload/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        </div>
+      </div>
+      <ul class="list">
+        <li><b>Windows:</b> Download über Releases oder Build per .NET 8 SDK.</li>
+        <li><b>Hinweis:</b> ShortUploader ist nicht mit TikTok, ByteDance, YouTube oder anderen Plattformen verbunden.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> ShortUploader. Nicht verbunden mit TikTok, YouTube oder anderen Plattformen.</div>
+    <div class="links">
+      <a href="tutorial.html">Tutorial / Info</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="https://github.com/cartuntik-beep/shortupload" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
